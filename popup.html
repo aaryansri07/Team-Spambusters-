@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>SpamBusters AI</title>
+
+<style>
+  body {
+    width: 340px;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: #f4f6fb;
+    margin: 0;
+  }
+
+  .header {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    padding: 20px;
+    text-align: center;
+    color: white;
+  }
+
+  .logo-circle {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin: 0 auto 10px auto;
+    border: 3px solid white;
+    background: #000;
+    box-shadow: 0 6px 14px rgba(0,0,0,0.25);
+  }
+
+  .logo-circle img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .title {
+    font-weight: 800;
+    font-size: 20px;
+    letter-spacing: 1px;
+  }
+
+  .subtitle {
+    font-size: 10px;
+    opacity: 0.9;
+    text-transform: uppercase;
+  }
+
+  .container {
+    padding: 16px;
+  }
+
+  button {
+    width: 100%;
+    padding: 12px;
+    border-radius: 12px;
+    border: none;
+    background: linear-gradient(135deg, #2d3436, #000);
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+  }
+
+  .verdict-box {
+    margin-top: 12px;
+    padding: 12px;
+    border-radius: 10px;
+    font-weight: bold;
+    text-align: center;
+    font-size: 14px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+  }
+
+  .stats-grid {
+    display: flex;
+    gap: 8px;
+    margin-top: 12px;
+  }
+
+  .stat-card {
+    flex: 1;
+    background: white;
+    border-radius: 10px;
+    padding: 10px;
+    text-align: center;
+    font-size: 11px;
+    border: 1px solid #eee;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  }
+
+  .stat-number {
+    font-size: 20px;
+    font-weight: bold;
+    display: block;
+  }
+
+  #graphBars {
+    display: flex;
+    gap: 4px;
+    align-items: flex-end;
+    height: 60px;
+    margin-top: 15px;
+    border-bottom: 2px solid #eee;
+    padding-bottom: 2px;
+  }
+
+  .legend {
+    font-size: 11px;
+    margin-top: 12px;
+    color: #555;
+    background: #fff;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #eee;
+  }
+
+  .footer {
+    font-size: 9px;
+    text-align: center;
+    margin-top: 12px;
+    color: #aaa;
+    padding-bottom: 10px;
+  }
+</style>
+</head>
+
+<body>
+<div class="header">
+  <div class="logo-circle">
+    <img src="spambusters_logo.png" alt="Logo">
+  </div>
+  <div class="title">SPAMBUSTERS</div>
+  <div class="subtitle">Gemini Review Auditor</div>
+</div>
+
+<div class="container">
+  <button id="scanBtn">Scan Page Reviews</button>
+
+  <div id="summary" style="display:none;">
+<div id="verdict" class="verdict-box"></div>
+
+    <div class="stats-grid">
+      <div class="stat-card">
+        <span id="safeCount" class="stat-number" style="color:#2ecc71">0</span>
+        Genuine
+      </div>
+
+      <div class="stat-card">
+        <span id="susCount" class="stat-number" style="color:#e74c3c">0</span>
+        Flagged(AI/Suspicious)
+      </div>
+    </div>
+
+    <div style="margin-top:15px;font-size:11px;font-weight:700;color:#666;text-align:center;">
+      AUTHENTICITY GRAPH
+    </div>
+
+    <div id="graphBars"></div>
+
+    <div class="legend">
+      <strong>Legend</strong><br>
+      🔴 Suspicious keywords<br>
+      🔵 AI phrases
+    </div>
+  </div>
+</div>
+
+<div class="footer">
+SpamBusters © 2026
+</div>
+
+<script src="popup.js"></script>
+</body>
+</html>
